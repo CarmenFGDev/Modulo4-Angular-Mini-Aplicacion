@@ -12,44 +12,45 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutComponent,
   },
   {
     path: 'dashboard',
     canActivate: [AuthGuard],
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: 'gallery',
     canActivate: [AuthGuard],
-    component: GalleryComponent
+    component: GalleryComponent,
   },
   {
     path: 'crud',
     canActivate: [AuthGuard],
-    component: CrudComponent
+    component: CrudComponent,
   },
   {
     path: 'profile',
     canActivate: [AuthGuard],
-    component: ProfileComponent
+    component: ProfileComponent,
   },
   {
     path: 'home',
-    component: HomeComponent
-  },  
+    component: HomeComponent,
+  },
   {
-    path: '',
-    component: HomeComponent
-  }  
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

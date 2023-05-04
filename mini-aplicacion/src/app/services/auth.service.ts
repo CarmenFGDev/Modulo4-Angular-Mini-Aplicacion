@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Observable, delay, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private isUserLogged: boolean = false;
+  private userLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    this.isUserLogged
+  );
+  public userLogged$ = this.userLogged.asObservable();
   constructor() {}
-  public isLogged(): Observable<boolean> {
+
+  public isLogged(): boolean {
     const isLogged = localStorage.getItem('loggedUser');
-    const loggedBoolean =!!isLogged && isLogged === 'true' ? true : false;
-    return of(loggedBoolean);
+    this.isUserLogged = !!isLogged && isLogged === 'true' ? true : false;
+    this.userLogged.next(this.isUserLogged);
+    return this.isUserLogged;
   }
 
-  public login(username?: string, password?: string){
+  public login(username?: string, password?: string) {
     if (username === 'lemon' && password === 'code') {
       localStorage.setItem('loggedUser', 'true');
       return true;

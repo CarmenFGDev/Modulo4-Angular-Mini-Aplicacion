@@ -1,10 +1,10 @@
 <div class="logo">
-    <img src ="../../../assets/logo.png" >
-    <h1>Angular Aplication</h1>
+  <img src="../../../assets/logo.png" />
+  <h1>Angular Aplication</h1>
 </div>
 <ng-container *ngIf="isLogged | async; else noLogged">
-    <app-menu-private></app-menu-private>
+  <app-menu-private></app-menu-private>
 </ng-container>
 <ng-template #noLogged>
-    <app-menu-public></app-menu-public>
+  <app-menu-public></app-menu-public>
 </ng-template>

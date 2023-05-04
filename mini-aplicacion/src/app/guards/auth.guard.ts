@@ -1,20 +1,15 @@
-/* import { CanActivateFn } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { UrlTree, Router } from '@angular/router';
 
-export const AuthGuard: CanActivateFn = (route, state) => {
-  return true;
-}; */
-import {Injectable} from '@angular/core';
-import { UrlTree, Router} from '@angular/router';
+import { Observable } from 'rxjs';
 
-import {Observable} from 'rxjs';
-
-import {AuthService} from '../services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthGuard  {
-  constructor(private authService: AuthService, private router: Router) { }
+export class AuthGuard {
+  constructor(private authService: AuthService, private router: Router) {}
   canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
@@ -24,9 +19,6 @@ export class AuthGuard  {
       this.router.navigate(['/login']);
       return false;
     }
-    // logged in, so return true
-    this.authService.isLogged();
     return true;
   }
 }
-
