@@ -32,10 +32,8 @@ export class LoginComponent {
     );
     if (isLogged) {
       this.router.navigate(['/dashboard']);
-      localStorage.setItem('username',this.userNameFormControl.value!);
     } else {
       this.openAlertDialog();
-      localStorage.setItem('username','');
     }
   }
 

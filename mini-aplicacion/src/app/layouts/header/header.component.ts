@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,11 +9,10 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isLogged= false;
+  isLogged: Observable<boolean> = this.authService.isLogged();
   constructor(private authService: AuthService, private router: Router){
   }
   ngOnInit(): void {
-    this.isLogged= this.authService.isLogged();
     const defaultPage = this.isLogged ? '/dashboard' : '';
     this.router.navigate([defaultPage]);
   }

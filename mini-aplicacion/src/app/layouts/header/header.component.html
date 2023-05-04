@@ -2,5 +2,9 @@
     <img src ="../../../assets/logo.png" >
     <h1>Angular Aplication</h1>
 </div>
-<app-menu-private *ngIf="isLogged"></app-menu-private>
-<app-menu-public *ngIf="!isLogged"></app-menu-public>
+<ng-container *ngIf="isLogged | async; else noLogged">
+    <app-menu-private></app-menu-private>
+</ng-container>
+<ng-template #noLogged>
+    <app-menu-public></app-menu-public>
+</ng-template>
