@@ -2,7 +2,14 @@
   <img src="../../../assets/logo.png" />
   <h1>Angular Aplication</h1>
 </div>
-<ng-container *ngIf="isLogged | async; else noLogged">
+<div class="options-logged" *ngIf="isLogged | async">
+  {{username | async}}
+  <button mat-fab extended color="primary"  (click)="logout()">
+    <mat-icon class="exit-button">forward</mat-icon>
+    Exit
+  </button>
+</div>
+ <ng-container *ngIf="isLogged | async; else noLogged">
   <app-menu-private></app-menu-private>
 </ng-container>
 <ng-template #noLogged>

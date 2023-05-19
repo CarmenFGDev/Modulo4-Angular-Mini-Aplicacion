@@ -23,6 +23,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './layouts/alert/alert.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AlertComponent } from './layouts/alert/alert.component';
     MatInputModule,
     MatIconModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule
   ],

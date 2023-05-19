@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,5 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent {
   isLogged: Observable<boolean> = this.authService.userLogged$;
-  constructor(private authService: AuthService, private router: Router) {}
+  username: Observable<string> = this.authService.userName$;
+
+  constructor(private authService: AuthService) {
+  }
+  logout(): void {
+    this.authService.logout();
+  }
 }

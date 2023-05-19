@@ -19,6 +19,7 @@ export class LoginComponent {
     Validators.required,
     Validators.minLength(3),
   ]);
+  spinner: boolean= false;
   constructor(
     private authService: AuthService,
     public dialog: MatDialog,
@@ -26,15 +27,18 @@ export class LoginComponent {
   ) {}
 
   public login() {
-    const isLogged = this.authService.login(
-      this.userNameFormControl.value!,
-      this.passwordFormControl.value!
-    );
-    if (isLogged) {
-      this.router.navigate(['/dashboard']);
-    } else {
-      this.openAlertDialog();
-    }
+    this.spinner = true;
+    this.authService
+      .login(this.userNameFormControl.value!, this.passwordFormControl.value!)
+      .subscribe((isLogged) => {
+        this.spinner = false;
+        if (isLogged) {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.openAlertDialog();
+        }
+      })
+    
   }
 
   public openAlertDialog() {

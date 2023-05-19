@@ -7,3 +7,15 @@
 img {
     width:100px;
 }
+.options-logged {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    font-size: 1.2em;
+    color: darkblue;
+    gap:10px;
+}
+.exit-button{
+    color:white;
+}
