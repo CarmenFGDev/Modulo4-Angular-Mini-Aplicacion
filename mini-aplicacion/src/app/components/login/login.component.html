@@ -1,4 +1,5 @@
-<mat-card>
+<mat-spinner *ngIf="spinner"></mat-spinner>
+<mat-card *ngIf="!spinner" class="card">
     <mat-card-content>
         <form class="login-form">
             <mat-form-field appearance="fill">

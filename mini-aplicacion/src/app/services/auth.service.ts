@@ -16,7 +16,9 @@ export class AuthService {
     this.userNameInitial
   );
   public userName$ = this.userName.asObservable();
-  constructor() {}
+  constructor() {
+    this.getUsername();
+  }
 
   public isLogged(): boolean {
     const isLogged = localStorage.getItem('loggedUser');
@@ -25,31 +27,31 @@ export class AuthService {
     return this.isUserLogged;
   }
 
-  public login(username?: string, password?: string):Observable<boolean> {
+  public login(username?: string, password?: string): Observable<boolean> {
     if (username === 'lemon' && password === 'code') {
       localStorage.setItem('loggedUser', 'true');
       localStorage.setItem('userName', username);
       this.userName.next(username);
       this.userLogged.next(true);
-      return of(true).pipe(delay(2000) ) 
+      return of(true).pipe(delay(2000));
     } else {
       localStorage.setItem('loggedUser', 'false');
-      localStorage.setItem('userName','');
+      localStorage.setItem('userName', '');
       this.userLogged.next(false);
       this.userName.next('');
-      return of(false).pipe(delay(2000)); 
+      return of(false).pipe(delay(2000));
     }
   }
   public getUsername() {
-      const username = localStorage.getItem('userName');
-      this.userNameInitial = !!username ? username : '';
-      this.userName.next(this.userNameInitial);
-      return this.userNameInitial;
+    const username = localStorage.getItem('userName');
+    this.userNameInitial = !!username ? username : '';
+    this.userName.next(this.userNameInitial);
+    return this.userNameInitial;
   }
   public logout() {
-     localStorage.setItem('loggedUser', 'false');
-     localStorage.setItem('userName','');
-     this.userLogged.next(false);
-     this.userName.next('');
+    localStorage.setItem('loggedUser', 'false');
+    localStorage.setItem('userName', '');
+    this.userLogged.next(false);
+    this.userName.next('');
   }
 }

@@ -11,8 +11,7 @@ export class HeaderComponent {
   isLogged: Observable<boolean> = this.authService.userLogged$;
   username: Observable<string> = this.authService.userName$;
 
-  constructor(private authService: AuthService) {
-  }
+  constructor(private authService: AuthService) {}
   logout(): void {
     this.authService.logout();
   }

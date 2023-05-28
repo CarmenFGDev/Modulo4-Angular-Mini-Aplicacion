@@ -19,11 +19,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './layouts/alert/alert.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { RotateImageDirective } from './directives/rotate-image.directive';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MenuPrivateComponent,
     HeaderComponent,
     FooterComponent,
-    AlertComponent
+    AlertComponent,
+    RotateImageDirective
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
     MatProgressSpinnerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

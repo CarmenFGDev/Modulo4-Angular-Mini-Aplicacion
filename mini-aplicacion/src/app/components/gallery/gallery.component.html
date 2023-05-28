@@ -1,3 +1,84 @@
-<mat-card>
-    <mat-card-content>Gallery</mat-card-content>
+<mat-card class="card">
+  <mat-card-content>
+    <div class="images">
+      <span
+        *ngFor="
+          let image of images
+            | slice : paginatorFirstImage - 1 : paginatorLastImage
+        "
+      >
+        <img
+          [src]="image.src"
+          alt="image.alt"
+          [ngClass]="image.id === imageSelected ? 'img-selected' : ''"
+          (click)="setSelectedImage(image.id)"
+        />
+      </span>
+    </div>
+    <div class="controls">
+      <div class="buttons-control">
+        <button
+          mat-mini-fab
+          color="primary"
+          aria-label="Previous"
+          (click)="previous()"
+          [disabled]="imageSelected === 1"
+        >
+          <mat-icon>skip_previous</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          aria-label="Next"
+          (click)="next()"
+          [disabled]="imageSelected === images.length"
+        >
+          <mat-icon>skip_next</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          aria-label="Zoom In"
+          (click)="zoom('in')"
+        >
+          <mat-icon>zoom_in</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          aria-label="Zoom Out"
+          (click)="zoom('out')"
+        >
+          <mat-icon>zoom_out</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" aria-label="Play" (click)="play()">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" aria-label="Stop" (click)="stop()">
+          <mat-icon>stop</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="paginator">
+      <mat-paginator
+        [length]="images.length"
+        [pageSize]="3"
+        [pageSizeOptions]="[2, 3, 4]"
+        aria-label="Select page"
+        (page)="handleChangePage($event)"
+      >
+      </mat-paginator>
+    </div>
+    <div class="image-selected">
+      <img
+        appRotateImage
+        [rotate]="50"
+        [step]="10"
+        [src]="getImageSelected()"
+        alt="image.alt"
+        class="img-zoom"
+        #divImage
+      />
+    </div>
+  </mat-card-content>
 </mat-card>

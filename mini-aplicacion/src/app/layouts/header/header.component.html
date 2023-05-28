@@ -1,15 +1,23 @@
-<div class="logo">
-  <img src="../../../assets/logo.png" />
-  <h1>Angular Aplication</h1>
+<div class="header">
+  <div class="logo">
+    <img src="../../../assets/earth.png" />
+    <h1>Angular Mini Aplicación</h1>
+  </div>
+  <div class="options-logged" *ngIf="isLogged | async">
+    {{ username | async }}
+
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="Example icon button with a home icon"
+      (click)="logout()"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </div>
 </div>
-<div class="options-logged" *ngIf="isLogged | async">
-  {{username | async}}
-  <button mat-fab extended color="primary"  (click)="logout()">
-    <mat-icon class="exit-button">forward</mat-icon>
-    Exit
-  </button>
-</div>
- <ng-container *ngIf="isLogged | async; else noLogged">
+
+<ng-container *ngIf="isLogged | async; else noLogged">
   <app-menu-private></app-menu-private>
 </ng-container>
 <ng-template #noLogged>

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss']
+  styleUrls: ['./alert.component.scss'],
 })
 export class AlertComponent {
   message: string = 'An unspecified error has occurred';
@@ -17,10 +17,9 @@ export class AlertComponent {
     },
     private dialogRef: MatDialogRef<AlertComponent>
   ) {
-   if (data?.message) this.message = data.message;
-  } 
+    if (data?.message) this.message = data.message;
+  }
   closeDialog() {
     this.dialogRef.close();
   }
-
 }

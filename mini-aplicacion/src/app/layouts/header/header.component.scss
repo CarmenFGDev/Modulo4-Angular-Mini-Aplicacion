@@ -1,6 +1,10 @@
+.header{
+    display:flex;
+    justify-content: space-between;
+}
 .logo{
     display:flex;
-    justify-content:center;
+    justify-content:left;
     align-items: center;  
     width:100%;  
 }
@@ -15,7 +19,12 @@ img {
     font-size: 1.2em;
     color: darkblue;
     gap:10px;
+    &.exit-button {
+            color: white;
+    }
 }
-.exit-button{
+h1{
     color:white;
+    font-weight: bolder;
+    letter-spacing: 1.5px;
 }
