@@ -59,11 +59,9 @@ export class GalleryComponent {
   }
 
   handleChangePage(event: any) {
-    console.log(event);
     this.imageSelected = this.paginatorFirstImage =
       event.pageIndex * event.pageSize + 1;
     const last = (event.pageIndex + 1) * event.pageSize;
     this.paginatorLastImage = Math.min(event.length, last);
-    console.log(this.paginatorFirstImage, this.paginatorLastImage);
   }
 }

@@ -19,7 +19,7 @@ export class LoginComponent {
     Validators.required,
     Validators.minLength(3),
   ]);
-  spinner: boolean= false;
+  spinner: boolean = false;
   constructor(
     private authService: AuthService,
     public dialog: MatDialog,
@@ -37,8 +37,7 @@ export class LoginComponent {
         } else {
           this.openAlertDialog();
         }
-      })
-    
+      });
   }
 
   public openAlertDialog() {
