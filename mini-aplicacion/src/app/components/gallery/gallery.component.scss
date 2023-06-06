@@ -12,18 +12,16 @@
 }
 .images img:hover{
     filter:brightness(200%);
-  
 }
 .img-selected{
     box-sizing: border-box;
     border:3px groove rgb(95, 95, 255);
 }
- .image-selected >.img-zoom{
+.image-selected >.img-zoom{
     width:30%;
     height:auto;
 }
-
- .buttons-control{
+.buttons-control{
     width:30%;
     display: flex;
     flex-direction: row;
